@@ -2,5 +2,12 @@
 version: '3.8'
 
 include:
-  - path: services/adguard.yaml
+  - path: resources/adguard.yaml
     project_directory: .
+
+networks:
+  yarr-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 171.18.18.0/24
