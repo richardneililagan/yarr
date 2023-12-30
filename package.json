@@ -1,0 +1,17 @@
+{
+  "name": "yarr",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "repository": "git@github.com:richardneililagan/yarr.git",
+  "author": "Richard Neil Ilagan <705310+richardneililagan@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1"
+  }
+}
