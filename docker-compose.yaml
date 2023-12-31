@@ -6,6 +6,8 @@ include:
     project_directory: .
   - path: resources/prowlarr.yaml
     project_directory: .
+  - path: resources/sonarr.yaml
+    project_directory: .
 
 networks:
   yarr-net:
