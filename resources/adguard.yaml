@@ -4,6 +4,9 @@ services:
     image: adguard/adguardhome
     restart: unless-stopped
 
+    environment:
+      - TZ=${TIMEZONE}
+
     volumes:
       - ./server/configs/adguard/work:/opt/adguardhome/work
       - ./server/configs/adguard/conf:/opt/adguardhome/conf
