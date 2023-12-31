@@ -1,0 +1,22 @@
+services:
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr:2.0.7
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+
+    volumes:
+      - ./server/configs/lidarr:/config
+      - ./server/data:/data
+
+    ports:
+      - ${LIDARR_PORT}:8686
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home
