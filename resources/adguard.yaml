@@ -16,10 +16,10 @@ services:
       # :: You will need to map ports 80, 443, and 3000 to your host to be able
       #    to manage it using the web interface. Which ports are available to you
       #    will differ based on your hosting requirements.
-      - 3010:80/tcp
-      # - 443:443/tcp
-      # - 443:443/udp
-      - 3000:3000/tcp
+      - ${ADGUARD_PORT_SETUP}:3000/tcp
+      - ${ADGUARD_PORT_HTTP}:80/tcp
+      # - ${ADGUARD_PORT_HTTPS}:443/tcp
+      # - ${ADGUARD_PORT_HTTPS}:443/udp
 
     networks:
       yarr-net:
