@@ -1,0 +1,22 @@
+services:
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr:5.2.6
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+
+    volumes:
+      - ./server/configs/radarr:/config
+      - ./server/data:/data
+
+    ports:
+      - ${RADARR_PORT}:7878
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home
