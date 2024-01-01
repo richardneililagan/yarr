@@ -13,17 +13,18 @@ PROJECT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 # :: ---
 
-all:
-	@echo $(PROJECT_DIR)
+all: clean podman
 
-start:
-	docker compose															\
-		-f $(PROJECT_DIR)/docker-compose.yaml			\
-		-f $(PROJECT_DIR)/resources/adguard.yaml	\
-		up -d
+clean:
+	rm -f $(PROJECT_DIR)/podman-compose.yaml
 
-stop:
-	docker compose															\
-		-f $(PROJECT_DIR)/docker-compose.yaml			\
-		-f $(PROJECT_DIR)/resources/adguard.yaml	\
-		down
+podman:
+	if ! [ -x "$$(command -v yq)" ]; then \
+		wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \
+			-O /usr/bin/yq && \
+    	chmod +x /usr/bin/yq; \
+	fi
+
+	yq eval-all '. as $$item ireduce({}; . * $$item)' \
+		$(PROJECT_DIR)/docker-compose.yaml \
+		$(PROJECT_DIR)/resources/*.yaml > $(PROJECT_DIR)/podman-compose.yaml
