@@ -44,3 +44,18 @@ now that DNS is configured.
 ```sh
 docker compose restart
 ```
+
+### qBittorrent
+
+When the service is first run, it will generate a random password for the `admin` user,
+and print it out on the logs. You need to login to the qBittorrent console
+(by default on port `:8080` of the cluster), and change this to something else.
+Without doing this, the administrator password is changed every time the service is restarted.
+
+These can be changed at **Tools** > **Options** > **Web UI** once logged in.
+
+To see what the generated password is, just query the logs for the cluster:
+
+```sh
+docker compose logs qbittorrent
+```

@@ -20,6 +20,8 @@ include:
     project_directory: .
   - path: resources/plex.yaml
     project_directory: .
+  - path: resources/qbittorrent.yaml
+    project_directory: .
 
 networks:
   yarr-net:

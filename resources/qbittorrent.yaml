@@ -1,0 +1,28 @@
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: linuxserver/qbittorrent:4.6.2
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
+      - WEBUI_PORT=${QBT_PORT_WEBUI}
+
+    volumes:
+      - ./server/configs/qbittorrent:/config
+      - ./server/data/torrents:/data/torrents
+
+    ports:
+      # @see https://docs.linuxserver.io/images/docker-qbittorrent/#webui_port-variable
+      - ${QBT_PORT_WEBUI}:${QBT_PORT_WEBUI}
+      - ${QBT_PORT_CONNECTIONS}:6881
+      - ${QBT_PORT_CONNECTIONS}:6881/udp
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home
