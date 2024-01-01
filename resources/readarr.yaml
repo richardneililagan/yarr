@@ -1,0 +1,24 @@
+services:
+  readarr:
+    container_name: readarr
+    image: linuxserver/readarr:0.3.14-develop
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
+
+    volumes:
+      - ./server/configs/readarr:/config
+      - ./server/data:/data
+
+    ports:
+      - ${READARR_PORT}:8787
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home

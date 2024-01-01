@@ -12,6 +12,8 @@ include:
     project_directory: .
   - path: resources/lidarr.yaml
     project_directory: .
+  - path: resources/readarr.yaml
+    project_directory: .
 
 networks:
   yarr-net:
