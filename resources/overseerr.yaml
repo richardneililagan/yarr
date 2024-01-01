@@ -1,0 +1,23 @@
+services:
+  overseerr:
+    container_name: overseerr
+    image: linuxserver/overseerr:1.33.2
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
+
+    volumes:
+      - ./server/configs/overseerr:/config
+
+    ports:
+      - ${OVERSEERR_PORT}:5055
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home

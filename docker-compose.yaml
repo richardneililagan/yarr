@@ -16,6 +16,8 @@ include:
     project_directory: .
   - path: resources/bazarr.yaml
     project_directory: .
+  - path: resources/overseerr.yaml
+    project_directory: .
 
 networks:
   yarr-net:
