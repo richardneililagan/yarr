@@ -6,6 +6,8 @@ services:
 
     environment:
       - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
 
     volumes:
       - ./server/configs/radarr:/config
