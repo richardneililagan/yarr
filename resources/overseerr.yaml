@@ -1,6 +1,5 @@
 services:
   overseerr:
-    container_name: overseerr
     image: linuxserver/overseerr:1.33.2
     restart: unless-stopped
 

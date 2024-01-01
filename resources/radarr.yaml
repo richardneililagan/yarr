@@ -1,6 +1,5 @@
 services:
   radarr:
-    container_name: radarr
     image: linuxserver/radarr:5.2.6
     restart: unless-stopped
 

@@ -1,6 +1,5 @@
 services:
   adguard-home:
-    container_name: adguard
     image: adguard/adguardhome:v0.107.43
     restart: unless-stopped
 

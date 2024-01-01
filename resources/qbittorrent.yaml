@@ -1,6 +1,5 @@
 services:
   qbittorrent:
-    container_name: qbittorrent
     image: linuxserver/qbittorrent:4.6.2
     restart: unless-stopped
 

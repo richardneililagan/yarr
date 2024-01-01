@@ -1,6 +1,5 @@
 services:
   readarr:
-    container_name: readarr
     image: linuxserver/readarr:0.3.14-develop
     restart: unless-stopped
 

@@ -1,6 +1,5 @@
 services:
   plex:
-    container_name: plex
     image: linuxserver/plex:1.32.8
     restart: unless-stopped
 
