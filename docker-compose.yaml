@@ -18,6 +18,8 @@ include:
     project_directory: .
   - path: resources/overseerr.yaml
     project_directory: .
+  - path: resources/plex.yaml
+    project_directory: .
 
 networks:
   yarr-net:

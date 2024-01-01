@@ -1,0 +1,25 @@
+services:
+  plex:
+    container_name: plex
+    image: linuxserver/plex:1.32.8
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
+      - VERSION=docker
+
+    volumes:
+      - ./server/configs/plex:/config
+      - ./server/data/media:/data/media
+
+    ports:
+      - ${PLEX_PORT}:32400
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home
