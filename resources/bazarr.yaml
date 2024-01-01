@@ -1,0 +1,24 @@
+services:
+  bazarr:
+    container_name: bazarr
+    image: linuxserver/bazarr:1.4.0
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=${CLUSTER_PID}
+      - PGID=${CLUSTER_GID}
+
+    volumes:
+      - ./server/configs/bazarr:/config
+      - ./server/data:/data
+
+    ports:
+      - ${BAZARR_PORT}:6767
+
+    dns: 171.18.18.10
+    networks:
+      yarr-net:
+
+    depends_on:
+      - adguard-home
